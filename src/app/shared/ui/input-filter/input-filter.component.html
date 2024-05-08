@@ -1,0 +1,10 @@
+<div class="filter">
+  <div>
+    <input type="text" [formControl]="controlField" />
+    <button>Очистить</button>
+  </div>
+  <div class="filter-box">
+    <button (click)="applyFilter()">Да</button>
+    <button (click)="clearSearchField()">Сбросить</button>
+  </div>
+</div>

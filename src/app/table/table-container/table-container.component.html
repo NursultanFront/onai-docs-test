@@ -1,0 +1,58 @@
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Бренд
+
+          <app-input-filter
+            field="brand"
+            (clearFilter)="resetField($event)"
+            (setFilter)="applyFilter()"
+          ></app-input-filter>
+          <div></div>
+        </th>
+        <th>
+          Артикул
+          <app-input-filter
+            field="attributes"
+            (clearFilter)="resetField($event)"
+            (setFilter)="applyFilter()"
+          ></app-input-filter>
+        </th>
+        <th>
+          Наименование товара
+          <app-input-filter
+            field="title"
+            (clearFilter)="resetField($event)"
+            (setFilter)="applyFilter()"
+          ></app-input-filter>
+        </th>
+        <th>
+          Цена
+          <app-input-filter
+            field="price"
+            (clearFilter)="resetField($event)"
+            (setFilter)="applyFilter()"
+          ></app-input-filter>
+        </th>
+        <th>
+          Наличие
+          <app-checkbox-filter
+            (clearFilter)="resetField($event)"
+            (setFilter)="applyFilter()"
+          ></app-checkbox-filter>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of dataList$ | async">
+        <td>{{ item.brand }}</td>
+        <td>{{ item.attributes }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.stock ? "В наличии" : "Нет в наличии" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

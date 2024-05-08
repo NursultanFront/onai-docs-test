@@ -1,0 +1,18 @@
+<div class="checkbox-container">
+  <div class="checkbox-container__top">
+    <div class="toggle-container">
+      <input
+        type="checkbox"
+        id="toggle-btn"
+        [formControl]="controlField"
+        [checked]="isChecked"
+        (change)="toggleChecked()"
+      />
+      <label for="toggle-btn"></label>
+    </div>
+  </div>
+  <div class="checkbox-container__bottom">
+    <button (click)="applyFilter()">Да</button>
+    <button (click)="makeDefaultStock()">Сбросить</button>
+  </div>
+</div>

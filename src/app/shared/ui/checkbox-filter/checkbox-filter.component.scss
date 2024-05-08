@@ -1,0 +1,36 @@
+.toggle-container input {
+	display: none;
+}
+
+.toggle-container label {
+	position: relative;
+	cursor: pointer;
+	display: block;
+	width: 27px;
+	height: 16px;
+	background: #cccccc;
+	border-radius: 50px;
+	transition: background-color 300ms linear;
+}
+
+.toggle-container label:before {
+	position: absolute;
+	top: 50%;
+	left: 2px;
+	transform: translateY(-50%);
+	content: "";
+	display: block;
+	width: 14px;
+	height: 14px;
+	background: #ffffff;
+	border-radius: 50%;
+	transition: left 300ms linear;
+}
+
+.toggle-container input:checked + label {
+	background: #000000;
+}
+
+.toggle-container input:checked + label:before {
+	left: 12px;
+}
