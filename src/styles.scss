@@ -29,3 +29,16 @@ button {
 input {
   outline: none;
 }
+
+::-webkit-scrollbar-thumb {
+  width: 6px;
+  height: 6px;
+  border-radius: 12px;
+  opacity: 0.48;
+  background-color: rgba(99, 115, 129, 1);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
