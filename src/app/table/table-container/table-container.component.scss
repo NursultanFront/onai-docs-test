@@ -16,7 +16,7 @@ thead th {
   position: sticky;
   top: 0;
   z-index: 10;
-  box-shadow: none; /* Убедитесь, что на заголовках нет лишней тени */
+  height: 48px;
   background-color: rgba(243, 243, 243, 1);
 }
 
@@ -60,4 +60,16 @@ th:nth-child(4) {
 
 th:nth-child(5) {
   min-width: 270px;
+}
+
+.table-th {
+  position: relative;
+}
+
+.in-stock {
+  color: rgba(0, 160, 227, 1);
+}
+
+.out-of-stock {
+  color: inherit;
 }

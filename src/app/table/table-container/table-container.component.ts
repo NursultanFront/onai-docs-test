@@ -5,6 +5,7 @@ import { IData } from '../interface/data.interface';
 import { DataProductService } from '../services/data-products/data-product.service';
 import { Observable } from 'rxjs';
 import { CheckboxFilterComponent } from '../../shared/ui/checkbox-filter/checkbox-filter.component';
+import { ClickOutsideDirective } from 'src/app/shared/directive/click-outside/click-outside.directive';
 
 @Component({
   selector: 'app-table-container',
@@ -12,7 +13,12 @@ import { CheckboxFilterComponent } from '../../shared/ui/checkbox-filter/checkbo
   styleUrls: ['./table-container.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, InputFilterComponent, CheckboxFilterComponent],
+  imports: [
+    CommonModule,
+    InputFilterComponent,
+    CheckboxFilterComponent,
+    ClickOutsideDirective,
+  ],
 })
 export class TableContainerComponent {
   public dataList$: Observable<IData[]> = this.dataService.datas$;

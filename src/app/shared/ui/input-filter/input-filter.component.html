@@ -1,10 +1,18 @@
-<div class="filter">
-  <div>
-    <input type="text" [formControl]="controlField" />
-    <button>Очистить</button>
+<div class="filter-container" clickOutside (clickOutside)="clickedOutside()">
+  <div class="filter-container__search">
+    <button (click)="toggleMenu($event)">
+      <img src="../../../../assets/search.svg" alt="Искать" />
+    </button>
   </div>
-  <div class="filter-box">
-    <button (click)="applyFilter()">Да</button>
-    <button (click)="clearSearchField()">Сбросить</button>
+
+  <div *ngIf="isMenuOpened" class="filter">
+    <div class="filter-top">
+      <input type="text" [formControl]="controlField" />
+      <button><img src="../../../../assets/close.svg" alt="" /></button>
+    </div>
+    <div class="filter-bottom">
+      <button (click)="applyFilter()">OK</button>
+      <button (click)="clearSearchField()">Сбросить</button>
+    </div>
   </div>
 </div>

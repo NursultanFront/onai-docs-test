@@ -3,45 +3,65 @@
     <thead>
       <tr>
         <th>
-          Бренд
+          <div class="table-th">
+            <span> Бренд</span>
 
-          <app-input-filter
-            field="brand"
-            (clearFilter)="resetField($event)"
-            (setFilter)="applyFilter()"
-          ></app-input-filter>
-          <div></div>
+            <app-input-filter
+              field="brand"
+              (clearFilter)="resetField($event)"
+              (setFilter)="applyFilter()"
+            ></app-input-filter>
+          </div>
         </th>
         <th>
-          Артикул
-          <app-input-filter
-            field="attributes"
-            (clearFilter)="resetField($event)"
-            (setFilter)="applyFilter()"
-          ></app-input-filter>
+          <div class="table-th">
+            <span> Артикул</span>
+
+            <app-input-filter
+              field="brand"
+              (clearFilter)="resetField($event)"
+              (setFilter)="applyFilter()"
+            ></app-input-filter>
+          </div>
         </th>
         <th>
-          Наименование товара
-          <app-input-filter
-            field="title"
-            (clearFilter)="resetField($event)"
-            (setFilter)="applyFilter()"
-          ></app-input-filter>
+          <div class="table-th">
+            <span> Наименование товара</span>
+
+            <app-input-filter
+              field="brand"
+              (clearFilter)="resetField($event)"
+              (setFilter)="applyFilter()"
+            ></app-input-filter>
+          </div>
         </th>
         <th>
-          Цена
-          <app-input-filter
-            field="price"
-            (clearFilter)="resetField($event)"
-            (setFilter)="applyFilter()"
-          ></app-input-filter>
+          <div class="table-th">
+            <span> Цена</span>
+
+            <app-input-filter
+              field="brand"
+              (clearFilter)="resetField($event)"
+              (setFilter)="applyFilter()"
+            ></app-input-filter>
+          </div>
         </th>
         <th>
-          Наличие
+          <!-- Наличие
           <app-checkbox-filter
             (clearFilter)="resetField($event)"
             (setFilter)="applyFilter()"
           ></app-checkbox-filter>
+        </th> -->
+
+          <div class="table-th">
+            <span> Наличие</span>
+
+            <app-checkbox-filter
+              (clearFilter)="resetField($event)"
+              (setFilter)="applyFilter()"
+            ></app-checkbox-filter>
+          </div>
         </th>
       </tr>
     </thead>
@@ -51,7 +71,9 @@
         <td>{{ item.attributes }}</td>
         <td>{{ item.title }}</td>
         <td>{{ item.price }}</td>
-        <td>{{ item.stock ? "В наличии" : "Нет в наличии" }}</td>
+        <td [ngClass]="item.stock ? 'in-stock' : 'out-of-stock'">
+          {{ item.stock ? "В наличии" : "Нет в наличии" }}
+        </td>
       </tr>
     </tbody>
   </table>

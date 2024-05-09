@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,17 +8,20 @@ import {
 } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { DataProductService } from 'src/app/table/services/data-products/data-product.service';
+import { ClickOutsideDirective } from '../../directive/click-outside/click-outside.directive';
 
 @Component({
   selector: 'app-checkbox-filter',
   templateUrl: './checkbox-filter.component.html',
   styleUrls: ['./checkbox-filter.component.scss'],
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule, ClickOutsideDirective],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxFilterComponent {
   public isChecked: boolean = false;
+
+  public isMenuOpened: boolean = false;
 
   @Output() clearFilter = new EventEmitter<string>();
   @Output() setFilter = new EventEmitter<void>();
@@ -26,15 +30,24 @@ export class CheckboxFilterComponent {
 
   constructor(private dataService: DataProductService) {}
 
-  toggleChecked() {
+  public toggleMenu(event: Event): void {
+    event.stopPropagation();
+    this.isMenuOpened = !this.isMenuOpened;
+  }
+
+  public clickedOutside(): void {
+    this.isMenuOpened = false;
+  }
+
+  public toggleChecked() {
     this.isChecked = !this.isChecked;
   }
 
-  applyFilter() {
+  public applyFilter() {
     this.setFilter.emit();
   }
 
-  makeDefaultStock() {
+  public makeDefaultStock() {
     this.clearFilter.emit('stock');
   }
 }

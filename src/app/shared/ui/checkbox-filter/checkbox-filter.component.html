@@ -1,18 +1,27 @@
-<div class="checkbox-container">
-  <div class="checkbox-container__top">
-    <div class="toggle-container">
-      <input
-        type="checkbox"
-        id="toggle-btn"
-        [formControl]="controlField"
-        [checked]="isChecked"
-        (change)="toggleChecked()"
-      />
-      <label for="toggle-btn"></label>
-    </div>
+<div class="filter-container" clickOutside (clickOutside)="clickedOutside()">
+  <div class="filter-container__search">
+    <button (click)="toggleMenu($event)">
+      <img src="../../../../assets/check-filter.svg" alt="Искать" />
+    </button>
   </div>
-  <div class="checkbox-container__bottom">
-    <button (click)="applyFilter()">Да</button>
-    <button (click)="makeDefaultStock()">Сбросить</button>
+
+  <div *ngIf="isMenuOpened" class="checkbox-container filter">
+    <div class="checkbox-container__top">
+      <div class="toggle-container">
+        <input
+          type="checkbox"
+          id="toggle-btn"
+          [formControl]="controlField"
+          [checked]="isChecked"
+          (change)="toggleChecked()"
+        />
+        <label for="toggle-btn"></label>
+        <span>В наличии</span>
+      </div>
+    </div>
+    <div class="checkbox-container__bottom filter-bottom">
+      <button (click)="applyFilter()">ОК</button>
+      <button (click)="makeDefaultStock()">Сбросить</button>
+    </div>
   </div>
 </div>
