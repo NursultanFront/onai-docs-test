@@ -30,6 +30,6 @@ export class TableContainerComponent {
   }
 
   public resetField(field: string) {
-    this.dataService.clearField(field);
+    this.dataService.resetField(field);
   }
 }

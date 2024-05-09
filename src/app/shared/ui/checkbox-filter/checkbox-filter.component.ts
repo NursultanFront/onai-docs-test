@@ -44,9 +44,11 @@ export class CheckboxFilterComponent {
 
   public applyFilter() {
     this.setFilter.emit();
+    this.isFilterOpened = false;
   }
 
   public makeDefaultStock() {
     this.clearFilter.emit('stock');
+    this.isFilterOpened = false;
   }
 }

@@ -6,7 +6,6 @@ import { data } from '../../mocks/mock-data';
 import { DataFormService } from '../data-forms/data-form.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -30,19 +29,30 @@ export class DataProductService {
     const price = Number(this.getFormControl('price').value);
     const stock = this.getFormControl('stock').value;
 
-    const filteredItems = this.originalData$.getValue().filter(item => (
-      (title ? item.title.toLowerCase().includes(title.toLowerCase().trim()) : true) &&
-      (brand ? item.brand.toLowerCase().includes(brand.toLowerCase().trim()) : true) &&
-      (attributes ? item.attributes === attributes : true) &&
-      (price ? item.price === price : true) &&
-      (stock !== null ? (stock ? item.stock > 0 : item.stock === 0) : true)
-    ));
+    const filteredItems = this.originalData$
+      .getValue()
+      .filter(
+        (item) =>
+          (title
+            ? item.title.toLowerCase().includes(title.toLowerCase().trim())
+            : true) &&
+          (brand
+            ? item.brand.toLowerCase().includes(brand.toLowerCase().trim())
+            : true) &&
+          (attributes ? item.attributes === attributes : true) &&
+          (price ? item.price === price : true) &&
+          (stock !== null ? (stock ? item.stock > 0 : item.stock === 0) : true)
+      );
 
     this.dataList$.next(filteredItems);
   }
 
+  public resetField(field: string) {
+    this.getFormControl(field).setValue(null);
+    this.filterDataByFields();
+  }
+
   public clearField(field: string) {
     this.getFormControl(field).setValue(null);
-    this.filterDataByFields()
-  }
+  };
 }

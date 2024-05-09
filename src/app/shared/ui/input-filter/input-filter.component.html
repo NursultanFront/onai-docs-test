@@ -8,11 +8,13 @@
   <div *ngIf="isFilterOpened" class="filter">
     <div class="filter-top">
       <input type="text" [formControl]="controlField" />
-      <button><img src="../../../../assets/close.svg" alt="" /></button>
+      <button (click)="clearFilterField()">
+        <img src="../../../../assets/close.svg" alt="Очистить" />
+      </button>
     </div>
     <div class="filter-bottom">
       <button (click)="applyFilter()">OK</button>
-      <button (click)="clearSearchField()">Сбросить</button>
+      <button (click)="resetFilter()">Сбросить</button>
     </div>
   </div>
 </div>

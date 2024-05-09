@@ -45,11 +45,17 @@ export class InputFilterComponent implements OnInit {
     this.isFilterOpened = false;
   }
 
-  public applyFilter() {
-    this.setFilter.emit();
+  public clearFilterField() {
+    this.dataService.clearField(this.field);
   }
 
-  public clearSearchField() {
+  public applyFilter() {
+    this.setFilter.emit();
+    this.isFilterOpened = false;
+  }
+
+  public resetFilter() {
     this.clearFilter.emit(this.field);
+    this.isFilterOpened = false;
   }
 }
