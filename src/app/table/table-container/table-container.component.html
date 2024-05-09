@@ -62,38 +62,49 @@
       </tr>
     </thead>
     <tbody class="table-body">
-      <tr *ngFor="let item of dataList$ | async; let i = index">
-        <td
-          [ngStyle]="{
-            'background-color':
-              i % 2 !== 0 ? 'rgba(249, 250, 250, 1)' : 'rgba(255, 255, 255, 1)'
-          }"
-        >
-          <div class="table-body-block">
-            {{ item.brand }}
-          </div>
-        </td>
-        <td>
-          <div>
-            {{ item.attributes }}
-          </div>
-        </td>
-        <td>
-          <div>
-            {{ item.title }}
-          </div>
-        </td>
-        <td>
-          <div>
-            {{ item.price }}
-          </div>
-        </td>
-        <td>
-          <div [ngClass]="item.stock ? 'in-stock' : 'out-of-stock'">
-            {{ item.stock ? "В наличии" : "Нет в наличии" }}
-          </div>
-        </td>
-      </tr>
+      <ng-container
+        *ngIf="(dataList$ | async)?.length === 0; else tableContent"
+      >
+        <tr>
+          <td colspan="5" class="no-data">Ничего не найдено</td>
+        </tr>
+      </ng-container>
+      <ng-template #tableContent>
+        <tr *ngFor="let item of dataList$ | async; let i = index">
+          <td
+            [ngStyle]="{
+              'background-color':
+                i % 2 !== 0
+                  ? 'rgba(249, 250, 250, 1)'
+                  : 'rgba(255, 255, 255, 1)'
+            }"
+          >
+            <div class="table-body-block">
+              {{ item.brand }}
+            </div>
+          </td>
+          <td>
+            <div>
+              {{ item.attributes }}
+            </div>
+          </td>
+          <td>
+            <div>
+              {{ item.title }}
+            </div>
+          </td>
+          <td>
+            <div>
+              {{ item.price }}
+            </div>
+          </td>
+          <td>
+            <div [ngClass]="item.stock ? 'in-stock' : 'out-of-stock'">
+              {{ item.stock ? "В наличии" : "Нет в наличии" }}
+            </div>
+          </td>
+        </tr>
+      </ng-template>
     </tbody>
   </table>
 </div>
