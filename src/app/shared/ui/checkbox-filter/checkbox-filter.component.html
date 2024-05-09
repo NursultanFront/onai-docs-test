@@ -1,11 +1,11 @@
 <div class="filter-container" clickOutside (clickOutside)="clickedOutside()">
   <div class="filter-container__search">
-    <button (click)="toggleMenu($event)">
+    <button (click)="toggleFilter()">
       <img src="../../../../assets/check-filter.svg" alt="Искать" />
     </button>
   </div>
 
-  <div *ngIf="isMenuOpened" class="checkbox-container filter">
+  <div *ngIf="isFilterOpened" class="checkbox-container filter">
     <div class="checkbox-container__top">
       <div class="toggle-container">
         <input

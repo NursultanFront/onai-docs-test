@@ -21,7 +21,7 @@ import { ClickOutsideDirective } from '../../directive/click-outside/click-outsi
 export class CheckboxFilterComponent {
   public isChecked: boolean = false;
 
-  public isMenuOpened: boolean = false;
+  public isFilterOpened: boolean = false;
 
   @Output() clearFilter = new EventEmitter<string>();
   @Output() setFilter = new EventEmitter<void>();
@@ -30,13 +30,12 @@ export class CheckboxFilterComponent {
 
   constructor(private dataService: DataProductService) {}
 
-  public toggleMenu(event: Event): void {
-    event.stopPropagation();
-    this.isMenuOpened = !this.isMenuOpened;
+  public toggleFilter(): void {
+    this.isFilterOpened = !this.isFilterOpened;
   }
 
   public clickedOutside(): void {
-    this.isMenuOpened = false;
+    this.isFilterOpened = false;
   }
 
   public toggleChecked() {

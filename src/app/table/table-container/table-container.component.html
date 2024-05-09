@@ -1,4 +1,7 @@
 <div class="table-container">
+  <div class="table-container__header">
+    <h1>Товары на складе</h1>
+  </div>
   <table>
     <thead>
       <tr>
@@ -18,7 +21,7 @@
             <span> Артикул</span>
 
             <app-input-filter
-              field="brand"
+              field="attributes"
               (clearFilter)="resetField($event)"
               (setFilter)="applyFilter()"
             ></app-input-filter>
@@ -29,7 +32,7 @@
             <span> Наименование товара</span>
 
             <app-input-filter
-              field="brand"
+              field="title"
               (clearFilter)="resetField($event)"
               (setFilter)="applyFilter()"
             ></app-input-filter>
@@ -40,7 +43,7 @@
             <span> Цена</span>
 
             <app-input-filter
-              field="brand"
+              field="price"
               (clearFilter)="resetField($event)"
               (setFilter)="applyFilter()"
             ></app-input-filter>

@@ -1,11 +1,11 @@
 <div class="filter-container" clickOutside (clickOutside)="clickedOutside()">
   <div class="filter-container__search">
-    <button (click)="toggleMenu($event)">
+    <button (click)="toggleFilter($event)">
       <img src="../../../../assets/search.svg" alt="Искать" />
     </button>
   </div>
 
-  <div *ngIf="isMenuOpened" class="filter">
+  <div *ngIf="isFilterOpened" class="filter">
     <div class="filter-top">
       <input type="text" [formControl]="controlField" />
       <button><img src="../../../../assets/close.svg" alt="" /></button>

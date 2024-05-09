@@ -26,7 +26,7 @@ export class InputFilterComponent implements OnInit {
   @Output() setFilter = new EventEmitter<void>();
 
   public controlField!: FormControl;
-  public isMenuOpened: boolean = false;
+  public isFilterOpened: boolean = false;
 
   constructor(private dataService: DataProductService) {}
 
@@ -36,13 +36,13 @@ export class InputFilterComponent implements OnInit {
     ) as FormControl;
   }
 
-  public toggleMenu(event: Event): void {
+  public toggleFilter(event: Event): void {
     event.stopPropagation();
-    this.isMenuOpened = !this.isMenuOpened;
+    this.isFilterOpened = !this.isFilterOpened;
   }
 
   public clickedOutside(): void {
-    this.isMenuOpened = false;
+    this.isFilterOpened = false;
   }
 
   public applyFilter() {
