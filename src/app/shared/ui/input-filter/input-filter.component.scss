@@ -15,8 +15,8 @@
 
     button {
       position: absolute;
-      top: -29px;
-      right: 0;
+      top: -16px;
+      right: 23px;
     }
   }
 }
@@ -32,10 +32,7 @@
       padding: 0px 40px 0 10px;
       height: 48px;
       width: 100%;
-
-      &:focus {
-        border: 0.5px solid rgba(0, 160, 227, 1);
-      }
+      border: 0.5px solid rgba(0, 160, 227, 1);
     }
     button {
       position: absolute;

@@ -2,8 +2,8 @@
   <table>
     <thead>
       <tr>
-        <th>
-          <div class="table-th">
+        <th class="table-header-th">
+          <div class="table-header-block table-header-block--shadow">
             <span> Бренд</span>
 
             <app-input-filter
@@ -13,8 +13,8 @@
             ></app-input-filter>
           </div>
         </th>
-        <th>
-          <div class="table-th">
+        <th class="table-header-th">
+          <div class="table-header-block">
             <span> Артикул</span>
 
             <app-input-filter
@@ -24,8 +24,8 @@
             ></app-input-filter>
           </div>
         </th>
-        <th>
-          <div class="table-th">
+        <th class="table-header-th">
+          <div class="table-header-block">
             <span> Наименование товара</span>
 
             <app-input-filter
@@ -35,8 +35,8 @@
             ></app-input-filter>
           </div>
         </th>
-        <th>
-          <div class="table-th">
+        <th class="table-header-th">
+          <div class="table-header-block">
             <span> Цена</span>
 
             <app-input-filter
@@ -46,15 +46,8 @@
             ></app-input-filter>
           </div>
         </th>
-        <th>
-          <!-- Наличие
-          <app-checkbox-filter
-            (clearFilter)="resetField($event)"
-            (setFilter)="applyFilter()"
-          ></app-checkbox-filter>
-        </th> -->
-
-          <div class="table-th">
+        <th class="table-header-th">
+          <div class="table-header-block">
             <span> Наличие</span>
 
             <app-checkbox-filter
@@ -65,14 +58,37 @@
         </th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let item of dataList$ | async">
-        <td>{{ item.brand }}</td>
-        <td>{{ item.attributes }}</td>
-        <td>{{ item.title }}</td>
-        <td>{{ item.price }}</td>
-        <td [ngClass]="item.stock ? 'in-stock' : 'out-of-stock'">
-          {{ item.stock ? "В наличии" : "Нет в наличии" }}
+    <tbody class="table-body">
+      <tr *ngFor="let item of dataList$ | async; let i = index">
+        <td
+          [ngStyle]="{
+            'background-color':
+              i % 2 !== 0 ? 'rgba(249, 250, 250, 1)' : 'rgba(255, 255, 255, 1)'
+          }"
+        >
+          <div class="table-body-block">
+            {{ item.brand }}
+          </div>
+        </td>
+        <td>
+          <div>
+            {{ item.attributes }}
+          </div>
+        </td>
+        <td>
+          <div>
+            {{ item.title }}
+          </div>
+        </td>
+        <td>
+          <div>
+            {{ item.price }}
+          </div>
+        </td>
+        <td>
+          <div [ngClass]="item.stock ? 'in-stock' : 'out-of-stock'">
+            {{ item.stock ? "В наличии" : "Нет в наличии" }}
+          </div>
         </td>
       </tr>
     </tbody>
